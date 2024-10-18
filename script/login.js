@@ -67,28 +67,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Re-initialize event listeners for the login form
   function reinitializeLoginForm() {
-    const toggleLoginPassword = document.getElementById('toggleLoginPassword');
-    const loginPassword = document.getElementById('loginPassword');
-    const loginIcon = document.getElementById('loginIcon');
-
-    // Reattach toggle password visibility event listener
-    toggleLoginPassword.addEventListener('click', function () {
-      const type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
-      loginPassword.setAttribute('type', type);
-
-      // Toggle the icon
-      if (type === 'password') {
-        loginIcon.classList.remove('fa-eye-slash');
-        loginIcon.classList.add('fa-eye');
-      } else {
-        loginIcon.classList.remove('fa-eye');
-        loginIcon.classList.add('fa-eye-slash');
-      }
-    });
+    togglePasswordVisibility('toggleLoginPassword', 'loginPassword', 'loginIcon');
   }
-
-  // Initialize login form event listeners
-  reinitializeLoginForm();
 });
 
 // Password visibility toggle function for both login and register forms
@@ -116,6 +96,8 @@ function togglePasswordVisibility(buttonId, inputId, iconId) {
 document.addEventListener("DOMContentLoaded", function () {
   togglePasswordVisibility('toggleLoginPassword', 'loginPassword', 'loginIcon');
   togglePasswordVisibility('toggleRegisterPassword', 'registerPassword', 'registerIcon');
+  // Initialize login form event listeners
+  reinitializeLoginForm();
 });
 
 // Registration form validation and localStorage handling
